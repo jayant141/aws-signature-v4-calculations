@@ -1,0 +1,19 @@
+This is policy created in Json. You need to change the bucket name, the date and time of expiration, the folder you want to create and access key.
+
+{ 
+"expiration": "2020-09-07T12:00:00.000Z",
+  "conditions": [
+    {"bucket": "<Bucket Name>"},
+    ["starts-with", "$key", "user/user1/"],
+    {"acl": "public-read"},
+    {"success_action_redirect": "<link to redirect page>"},
+    ["starts-with", "$Content-Type", "image/"],
+    {"x-amz-meta-uuid": "14365123651274"},
+    {"x-amz-server-side-encryption": "AES256"},
+    ["starts-with", "$x-amz-meta-tag", ""],
+
+    {"x-amz-credential": "<AIM access key>/20200907/ap-south-1/s3/aws4_request"},
+    {"x-amz-algorithm": "AWS4-HMAC-SHA256"},
+    {"x-amz-date": "20200907T000000Z" }
+  ]
+}
